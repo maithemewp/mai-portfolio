@@ -4,7 +4,7 @@
  * Plugin Name:     Mai Portfolio
  * Plugin URI:      https://bizbudding.com/products/mai-portfolio/
  * Description:     A versatile and lightweight portfolio plugin for Mai Theme.
- * Version:         0.1.0
+ * Version:         0.1.1
  *
  * Author:          BizBudding
  * Author URI:      https://bizbudding.com
@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 /**
  * Main Mai_Portfolio Class.
  *
- * @since 0.1.0
+ * @since 0.1.1
  */
 final class Mai_Portfolio {
 
@@ -180,6 +180,16 @@ final class Mai_Portfolio {
 		// Maybe set github api token.
 		if ( defined( 'MAI_GITHUB_API_TOKEN' ) ) {
 			$updater->setAuthentication( MAI_GITHUB_API_TOKEN );
+		}
+
+		// Add icons for Dashboard > Updates screen.
+		if ( function_exists( 'mai_get_updater_icons' ) && $icons = mai_get_updater_icons() ) {
+			$updater->addResultFilter(
+				function ( $info ) use ( $icons ) {
+					$info->icons = $icons;
+					return $info;
+				}
+			);
 		}
 	}
 
