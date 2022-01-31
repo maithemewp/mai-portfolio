@@ -2,9 +2,9 @@
 
 /**
  * Plugin Name:     Mai Portfolio
- * Plugin URI:      https://bizbudding.com/products/mai-portfolio/
+ * Plugin URI:      https://bizbudding.com/mai-design-pack/
  * Description:     A versatile and lightweight portfolio plugin for Mai Theme.
- * Version:         0.1.1
+ * Version:         1.0.0
  *
  * Author:          BizBudding
  * Author URI:      https://bizbudding.com
@@ -14,36 +14,36 @@
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 /**
- * Main Mai_Portfolio Class.
+ * Main Mai_Portfolio_Plugin Class.
  *
- * @since 0.1.1
+ * @since 0.1.0
  */
-final class Mai_Portfolio {
+final class Mai_Portfolio_Plugin {
 
 	/**
-	 * @var   Mai_Portfolio The one true Mai_Portfolio
+	 * @var   Mai_Portfolio_Plugin The one true Mai_Portfolio_Plugin
 	 * @since 0.1.0
 	 */
 	private static $instance;
 
 	/**
-	 * Main Mai_Portfolio Instance.
+	 * Main Mai_Portfolio_Plugin Instance.
 	 *
-	 * Insures that only one instance of Mai_Portfolio exists in memory at any one
+	 * Insures that only one instance of Mai_Portfolio_Plugin exists in memory at any one
 	 * time. Also prevents needing to define globals all over the place.
 	 *
 	 * @since   0.1.0
 	 * @static  var array $instance
-	 * @uses    Mai_Portfolio::setup_constants() Setup the constants needed.
-	 * @uses    Mai_Portfolio::includes() Include the required files.
-	 * @uses    Mai_Portfolio::hooks() Activate, deactivate, etc.
-	 * @see     Mai_Portfolio()
-	 * @return  object | Mai_Portfolio The one true Mai_Portfolio
+	 * @uses    Mai_Portfolio_Plugin::setup_constants() Setup the constants needed.
+	 * @uses    Mai_Portfolio_Plugin::includes() Include the required files.
+	 * @uses    Mai_Portfolio_Plugin::hooks() Activate, deactivate, etc.
+	 * @see     Mai_Portfolio_Plugin()
+	 * @return  object | Mai_Portfolio_Plugin The one true Mai_Portfolio_Plugin
 	 */
 	public static function instance() {
 		if ( ! isset( self::$instance ) ) {
 			// Setup the setup.
-			self::$instance = new Mai_Portfolio;
+			self::$instance = new Mai_Portfolio_Plugin;
 			// Methods.
 			self::$instance->setup_constants();
 			self::$instance->includes();
@@ -90,7 +90,7 @@ final class Mai_Portfolio {
 
 		// Plugin version.
 		if ( ! defined( 'MAI_PORTFOLIO_VERSION' ) ) {
-			define( 'MAI_PORTFOLIO_VERSION', '0.1.0' );
+			define( 'MAI_PORTFOLIO_VERSION', '1.0.0' );
 		}
 
 		// Plugin Folder Path.
@@ -141,7 +141,6 @@ final class Mai_Portfolio {
 	 * @return  void
 	 */
 	public function hooks() {
-
 		add_action( 'admin_init',                      [ $this, 'updater' ] );
 		add_action( 'init',                            [ $this, 'register_content_types' ] );
 		add_filter( 'mai_get_option_archive-settings', [ $this, 'add_setting' ] );
@@ -243,7 +242,7 @@ final class Mai_Portfolio {
 				'public'             => true,
 				'show_in_rest'       => true,
 				'rewrite'            => [ 'slug' => 'portfolio', 'with_front' => false ],
-				'supports'           => [ 'title', 'editor', 'excerpt', 'thumbnail', 'author', 'page-attributes', 'genesis-seo', 'genesis-cpt-archives-settings' ],
+				'supports'           => [ 'title', 'editor', 'excerpt', 'thumbnail', 'author', 'page-attributes', 'genesis-seo', 'genesis-cpt-archives-settings', 'mai-archive-settings', 'mai-single-settings' ],
 				'taxonomies'         => [ 'portfolio_type', 'portfolio_tag' ],
 			]
 		);
@@ -363,23 +362,23 @@ final class Mai_Portfolio {
 }
 
 /**
- * The main function for that returns Mai_Portfolio
+ * The main function for that returns Mai_Portfolio_Plugin
  *
- * The main function responsible for returning the one true Mai_Portfolio
+ * The main function responsible for returning the one true Mai_Portfolio_Plugin
  * Instance to functions everywhere.
  *
  * Use this function like you would a global variable, except without needing
  * to declare the global.
  *
- * Example: <?php $plugin = Mai_Portfolio(); ?>
+ * Example: <?php $plugin = Mai_Portfolio_Plugin(); ?>
  *
  * @since 0.1.0
  *
- * @return object|Mai_Portfolio The one true Mai_Portfolio Instance.
+ * @return object|Mai_Portfolio_Plugin The one true Mai_Portfolio_Plugin Instance.
  */
-function Mai_Portfolio() {
-	return Mai_Portfolio::instance();
+function mai_portfolio() {
+	return Mai_Portfolio_Plugin::instance();
 }
 
-// Get Mai_Portfolio Running.
-Mai_Portfolio();
+// Get Mai_Portfolio_Plugin Running.
+mai_portfolio();
