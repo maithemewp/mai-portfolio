@@ -4,7 +4,7 @@
  * Plugin Name:     Mai Portfolio
  * Plugin URI:      https://bizbudding.com/mai-design-pack/
  * Description:     A versatile and lightweight portfolio plugin for Mai Theme.
- * Version:         1.1.1
+ * Version:         1.1.2
  *
  * Author:          BizBudding
  * Author URI:      https://bizbudding.com
@@ -92,7 +92,7 @@ final class Mai_Portfolio_Plugin {
 	private function setup_constants() {
 		// Plugin version.
 		if ( ! defined( 'MAI_PORTFOLIO_VERSION' ) ) {
-			define( 'MAI_PORTFOLIO_VERSION', '1.1.1' );
+			define( 'MAI_PORTFOLIO_VERSION', '1.1.2' );
 		}
 
 		// Plugin Folder Path.
