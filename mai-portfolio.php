@@ -5,6 +5,7 @@
  * Plugin URI:      https://bizbudding.com/mai-design-pack/
  * Description:     A versatile and lightweight portfolio plugin for Mai Theme.
  * Version:         1.1.3
+ * Requires PHP:    8.1
  *
  * Author:          BizBudding
  * Author URI:      https://bizbudding.com
